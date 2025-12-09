@@ -1,12 +1,15 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
 import { PenBox } from "lucide-react";
 import UserMenu from "@/components/UserMenu";
+import { checkUser } from "@/lib/checkUser";
 
-function Header() {
+async function Header() {
+  await checkUser();
+
   return (
     <nav className="px-4 py-2 flex justify-between items-center shadow-md border-b-2">
       <Link href="/">
